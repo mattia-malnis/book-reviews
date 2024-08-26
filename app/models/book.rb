@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  include ImageUploadable
+
   validates :title, presence: true
 
   before_validation :normalize_fields

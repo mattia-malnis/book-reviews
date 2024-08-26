@@ -33,7 +33,10 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
+
+# Background Jobs [https://github.com/bensheldon/good_job]
+gem "good_job", "~> 4.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -62,6 +65,9 @@ group :development, :test do
 
   # Ruby extension to parse, deparse and normalize SQL queries using the PostgreSQL query parser [https://github.com/pganalyze/pg_query]
   gem "pg_query", "~> 5.1"
+
+  # A Ruby gem to load environment variables from `.env` [https://github.com/bkeepers/dotenv]
+  gem "dotenv-rails", "~> 3.1", ">= 3.1.2"
 end
 
 group :development do
@@ -79,4 +85,7 @@ group :test do
 
   # Simple one-liner tests for common Rails functionality [https://github.com/thoughtbot/shoulda-matchers]
   gem "shoulda-matchers", "~> 6.4"
+
+  # Library for stubbing and setting expectations on HTTP requests in Ruby [https://github.com/bblimke/webmock]
+  gem "webmock", "~> 3.23"
 end
