@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_25_204900) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_26_131423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,9 +47,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_25_204900) do
     t.string "subtitle"
     t.string "temp_image_url"
     t.integer "external_ref"
-    t.virtual "textsearchable_col", type: :tsvector, as: "to_tsvector('english'::regconfig, (((title)::text || ' '::text) || (subtitle)::text))", stored: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.virtual "textsearchable_col", type: :tsvector, as: "to_tsvector('english'::regconfig, (((COALESCE(title, ''::character varying))::text || ' '::text) || (COALESCE(subtitle, ''::character varying))::text))", stored: true
     t.index ["textsearchable_col"], name: "index_books_on_textsearchable_col", using: :gin
   end
 
