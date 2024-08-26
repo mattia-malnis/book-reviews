@@ -1,0 +1,13 @@
+<div class="container mx-auto mt-8 px-4 lg:px-0 pb-8 lg:pb-12">
+  <article class="book-details">
+    <div class="lg:flex lg:items-center gap-x-3.5">
+      <section class="">
+        <%= book_image(@book, "max-h-72 rounded shadow") %>
+      </section>
+      <section class="">
+        <h1 class="text-xl font-semibold mb-2"><%= @book.title %></h1>
+        <%= @book.subtitle %>
+      </section>
+    </div>
+  </article>
+</div>
