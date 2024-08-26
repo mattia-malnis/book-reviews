@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+.pagy {
+  @apply flex items-center justify-center -space-x-px mt-8;
 }
 
-*/
+.pagy a:not(.gap) {
+  @apply flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-400 bg-white;
+
+  &:hover {
+    @apply text-indigo-600;
+  }
+
+  &:not([href]) {
+    @apply text-gray-200 cursor-default;
+  }
+
+  &.current {
+    @apply text-indigo-600;
+  }
+}
