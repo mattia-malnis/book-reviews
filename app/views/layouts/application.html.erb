@@ -20,7 +20,10 @@
 
   <body>
     <main>
+      <%= render partial: "shared/header" %>
       <%= yield %>
     </main>
+
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>

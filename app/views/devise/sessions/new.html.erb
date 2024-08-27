@@ -1,0 +1,30 @@
+<%= modal({title: "Log in"}) do %>
+  <%= modal_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= alert_error(flash[:alert]) %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field flex items-center">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, class: "text-sm text-gray-700" %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+
+  <div class="mt-6">
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>

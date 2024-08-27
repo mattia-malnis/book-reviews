@@ -1,0 +1,13 @@
+<%# locals: (content:, classes:, title:) -%>
+<%= turbo_frame_tag "modal" do %>
+  <dialog class="p-6 bg-white border border-alpha-black-25 rounded-xl max-w-[580px] w-min-content shadow-xs h-fit backdrop:bg-black/50 backdrop:backdrop-blur-md <%= classes %>" data-controller="modal" data-action="click->modal#clickOutside">
+    <header class="flex justify-between items-center">
+      <h2 class="font-medium text-xl"><%= title %></h2>
+      <%= inline_svg_tag("x-mark.svg", class: "size-5 cursor-pointer", data: { action: "click->modal#close" }) %>
+    </header>
+
+    <div class="flex flex-col">
+      <%= content %>
+    </div>
+  </dialog>
+<% end %>

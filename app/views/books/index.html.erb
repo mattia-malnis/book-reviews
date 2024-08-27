@@ -1,17 +1,17 @@
-<div class="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 flex w-full items-center justify-center bg-white shadow-dark-mild py-8 mb-1">
-  <div class="container mx-auto px-4 lg:px-0">
-    <%= form_with url: request.path, method: :get, class: "flex items-center max-w-lg mx-auto ", data: { turbo_frame: "listing", turbo_action: "advance" } do %>
+<% content_for :header do %>
+  <div class="flex-grow mx-4 max-w-2xl">
+    <%= form_with url: request.path, method: :get, class: "flex items-center w-full", data: { turbo_frame: "listing", turbo_action: "advance" } do %>
       <div class="relative w-full">
-        <%= text_field_tag :query, params[:query], autocomplete: "off", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pr-10 p-2.5" %>
-        <%= button_tag type: "submit", name: nil, class: "absolute inset-y-0 end-0 flex items-center pe-3" do %>
-          <%= inline_svg_tag("search.svg", class: "size-4") %>
+        <%= text_field_tag :query, params[:query], autocomplete: "off", placeholder: "Search books...", class: "w-full py-2 px-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500" %>
+        <%= button_tag type: "submit", name: nil, class: "absolute inset-y-0 right-0 flex items-center pr-3" do %>
+          <%= inline_svg_tag("search.svg", class: "size-5 text-gray-500") %>
         <% end %>
       </div>
     <% end %>
   </div>
-</div>
+<% end %>
 
-<div class="container mx-auto px-4 lg:px-0 pb-8 lg:pb-12">
+<div class="container mx-auto mt-8 px-4 lg:px-0 pb-8 lg:pb-12">
   <%= turbo_frame_tag "listing", target: "_top" do %>
     <% if @books.blank? %>
       <%= render partial: "empty_list" %>

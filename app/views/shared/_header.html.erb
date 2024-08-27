@@ -1,0 +1,23 @@
+<header class="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-50 shadow-dark-mild py-4">
+  <div class="container mx-auto px-4 lg:px-0">
+    <div class="flex items-center justify-between min-h-[38px]">
+      <div>
+        <%= link_to "Books reviews", root_path, class: "text-xl font-bold text-gray-800" %>
+      </div>
+
+      <% if content_for? :header %>
+        <%= yield :header %>
+      <% end %>
+
+      <div>
+        <% if user_signed_in? %>
+          <%= link_to "Log out", destroy_user_session_path, class: "flex items-center text-blue-600 hover:text-blue-800 font-medium", data: { turbo_method: :delete } %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "flex items-center text-blue-600 hover:text-blue-800 font-medium", data: { turbo_frame: "modal" } do %>
+            <%= inline_svg_tag("user-circle.svg", class: "size-5 mr-1") %> Login
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
