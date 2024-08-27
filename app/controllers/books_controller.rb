@@ -14,6 +14,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @reviews = @book.reviews.eager_load(:user)
+    @pagy, @reviews = pagy(@reviews)
   end
 
   private
