@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_26_135531) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_27_124238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -139,6 +139,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_26_135531) do
     t.index ["priority", "scheduled_at"], name: "index_good_jobs_on_priority_scheduled_at_unfinished_unlocked", where: "((finished_at IS NULL) AND (locked_by_id IS NULL))"
     t.index ["queue_name", "scheduled_at"], name: "index_good_jobs_on_queue_name_and_scheduled_at", where: "(finished_at IS NULL)"
     t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "rating", null: false
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

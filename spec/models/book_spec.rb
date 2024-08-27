@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe Book, type: :model do
   let(:book) { FactoryBot.create(:book) }
 
+  context "associations" do
+    it { should have_many(:reviews) }
+  end
+
   context "validations" do
     it "is valid with valid attributes" do
       expect(book).to be_valid

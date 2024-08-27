@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   include PgSearch::Model
   include ImageUploadable
 
+  has_many :reviews
+
   validates :title, presence: true
 
   before_validation :normalize_fields
