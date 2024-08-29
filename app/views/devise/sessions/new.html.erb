@@ -1,5 +1,5 @@
 <%= modal({title: "Log in"}) do %>
-  <%= modal_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= modal_form_for(resource, as: resource_name, url: session_path(resource_name), data: { action: "turbo:submit-end->modal#reloadOnSuccess" }) do |f| %>
     <%= alert_error(flash[:alert]) %>
 
     <div class="field">

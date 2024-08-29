@@ -20,6 +20,12 @@ export default class extends Controller {
     this.element.close();
   }
 
+  closeOnSuccess(e) {
+    if (e.detail.success) {
+      this.close();
+    }
+  }
+
   reloadOnSuccess(e) {
     if (e.detail.success) {
       this.close();

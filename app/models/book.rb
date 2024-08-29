@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   include PgSearch::Model
   include ImageUploadable
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
 

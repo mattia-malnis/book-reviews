@@ -30,7 +30,7 @@ module ApplicationHelper
     options[:html] ||= {}
     options[:html][:class] = [ "min-w-[350px] space-y-6", options[:html][:class] ]
     options[:data] ||= {}
-    options[:data][:action] = "turbo:submit-end->modal#reloadOnSuccess"
+    options[:data][:action] = "turbo:submit-end->modal#closeOnSuccess" unless options[:data].key? :action
     form_for(record, options, &block)
   end
 end

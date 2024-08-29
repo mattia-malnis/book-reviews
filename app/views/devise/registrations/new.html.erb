@@ -1,5 +1,5 @@
 <%= modal({title: "Sign up"}) do %>
-  <%= modal_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= modal_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { action: "turbo:submit-end->modal#reloadOnSuccess" }) do |f| %>
     <%= alert_error(resource.errors.full_messages, I18n.t("errors.messages.not_saved", count: resource.errors.count, resource: resource.class.model_name.human.downcase)) %>
 
     <div class="field">

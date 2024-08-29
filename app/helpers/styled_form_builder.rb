@@ -1,5 +1,5 @@
 class StyledFormBuilder < ActionView::Helpers::FormBuilder
-  INPUT_TYPES = [ :text_field, :email_field, :password_field, :number_field, :date_field ]
+  INPUT_TYPES = [ :text_field, :email_field, :password_field, :number_field, :date_field, :text_area ]
 
   INPUT_TYPES.each do |input_type|
     define_method(input_type) do |method, options = {}|

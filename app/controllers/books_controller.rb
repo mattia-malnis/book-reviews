@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   include Pagy::Backend
+  include FindBook
 
   before_action :find_book, only: [ :show ]
 
@@ -10,19 +11,12 @@ class BooksController < ApplicationController
       @books = Book.all
     end
 
+    @books = @books.with_attached_image
     @pagy, @books = pagy(@books)
   end
 
   def show
     @reviews = @book.reviews.eager_load(:user)
     @pagy, @reviews = pagy(@reviews)
-  end
-
-  private
-
-  def find_book
-    @book = Book.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render file: Rails.root.join("public", "404.html"), status: :not_found, layout: false
   end
 end

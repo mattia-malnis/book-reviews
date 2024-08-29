@@ -1,0 +1,26 @@
+<%# locals: (url:, submit_label:) -%>
+
+<%= modal({title: "Review: #{@book.title}"}) do %>
+  <%= modal_form_for(@review, url: url) do |f| %>
+    <%= alert_error(@review.errors.full_messages) %>
+
+    <div class="field">
+      <%= f.label :rating %>
+      <%= rating_field(f) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit submit_label %>
+    </div>
+  <% end %>
+<% end %>

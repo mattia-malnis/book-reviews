@@ -7,6 +7,8 @@ class Review < ApplicationRecord
 
   before_validation :normalize_fields
 
+  default_scope { order(created_at: :desc) }
+
   private
 
   def normalize_fields
