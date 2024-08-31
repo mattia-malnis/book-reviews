@@ -1,15 +1,17 @@
 <%# locals: (review:) -%>
 
-<%= content_tag :div, class:"flex justify-between my-6 border-b pb-4", id: dom_id(review) do %>
-  <div>
-    <%= render_stars(review.rating) %>
-    <h3 class="text-lg font-semibold text-gray-700"><%= review.title %></h3>
-    <p class="text-sm text-gray-500">By <%= review.user.nickname %></p>
-    <p class="text-gray-600 mt-2"><%= review.description %></p>
-  </div>
-  <% if user_is_creator?(review) %>
-    <div>
-      <%= link_to inline_svg_tag("pencil-square.svg", class: "size-6"), edit_book_review_path(@book, review), data: { turbo_frame: "modal" } %>
+<%= content_tag :div, class: "bg-white rounded-lg shadow p-6", id: dom_id(review) do %>
+  <div class="flex justify-between items-start">
+    <div class="space-y-1">
+      <%= render_stars(review.rating) %>
+      <h3 class="text-xl font-semibold text-gray-800"><%= review.title %></h3>
+      <p class="text-sm text-gray-500">By <%= review.user.nickname %></p>
     </div>
-  <% end %>
+    <% if user_is_creator?(review) %>
+      <%= link_to edit_book_review_path(@book, review), class: "text-gray-400 hover:text-blue-600 transition duration-150", data: { turbo_frame: "modal" } do %>
+        <%= inline_svg_tag("pencil-square.svg", class: "w-6 h-6") %>
+      <% end %>
+    <% end %>
+  </div>
+  <p class="text-gray-600 mt-4"><%= review.description %></p>
 <% end %>

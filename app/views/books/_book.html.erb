@@ -1,6 +1,9 @@
-<div class="flex flex-col items-center">
-  <%= link_to book_path(book), class: "text-center" do %>
-    <%= book_image(book, "w-48 h-72 object-cover rounded shadow-md mx-auto mb-4") %>
-    <h3 class="text-lg font-semibold leading-tight"><%= book.title %></h3>
+<div class="group">
+  <%= link_to book_path(book), class: "flex flex-col items-center" do %>
+    <div class="relative overflow-hidden rounded shadow-md transition duration-300 ease-in-out group-hover:shadow-xl bg-white">
+      <%= book_image(book, "w-full h-72 object-cover transition duration-300 ease-in-out group-hover:scale-105") %>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out"></div>
+    </div>
+    <h3 class="mt-3 px-2 text-center text-sm font-medium leading-tight text-gray-800 group-hover:text-blue-600 transition duration-300 ease-in-out line-clamp-2"><%= book.title %></h3>
   <% end %>
 </div>

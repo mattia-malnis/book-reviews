@@ -1,8 +1,11 @@
-<header class="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-50 shadow-dark-mild py-4">
-  <div class="container mx-auto px-4 lg:px-0">
-    <div class="flex items-center justify-between min-h-[38px]">
-      <div>
-        <%= link_to "Books reviews", root_path, class: "text-xl font-bold text-gray-800" %>
+<header class="sticky top-0 z-10 bg-white/80 backdrop-blur-md shadow-lg py-4">
+  <div class="container mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between min-h-[44px]">
+      <div class="flex-shrink-0">
+        <%= link_to root_path, class: "text-2xl font-bold text-blue-600 hover:text-blue-700 transition duration-150" do %>
+          <%= inline_svg_tag("book-open.svg", class: "inline-block w-8 h-8 mr-2") %>
+          <span>Books Reviews</span>
+        <% end %>
       </div>
 
       <% if content_for? :header %>
@@ -11,10 +14,10 @@
 
       <div>
         <% if user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, class: "flex items-center text-blue-600 hover:text-blue-800 font-medium", data: { turbo_method: :delete } %>
+          <%= link_to "Log out", destroy_user_session_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_method: :delete } %>
         <% else %>
-          <%= link_to new_user_session_path, class: "flex items-center text-blue-600 hover:text-blue-800 font-medium", data: { turbo_frame: "modal" } do %>
-            <%= inline_svg_tag("user-circle.svg", class: "size-5 mr-1") %> Login
+          <%= link_to new_user_session_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_frame: "modal" } do %>
+            <%= inline_svg_tag("user-circle.svg", class: "w-5 h-5 mr-2") %> Login
           <% end %>
         <% end %>
       </div>
