@@ -4,6 +4,8 @@ class Book < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
 
+  broadcasts_refreshes
+
   validates :title, presence: true
 
   before_validation :normalize_fields
