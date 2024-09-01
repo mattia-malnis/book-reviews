@@ -1,6 +1,6 @@
 <%# locals: (url:, submit_label:) -%>
 
-<%= modal({title: "Review: #{@book.title}"}) do %>
+<%= modal({title: "Review: #{@review.book.title}"}) do %>
   <%= modal_form_for(@review, url: url) do |f| %>
     <%= alert_error(@review.errors.full_messages) %>
 
@@ -16,7 +16,7 @@
 
     <div class="field">
       <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, rows: 5 %>
     </div>
 
     <div class="actions">

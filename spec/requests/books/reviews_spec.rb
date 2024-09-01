@@ -86,16 +86,16 @@ RSpec.describe "Books::Reviews", type: :request do
   context "authorization" do
     let(:user2) { FactoryBot.create(:user) }
 
-    it "redirects non-owner user to the book page when trying to edit a review" do
+    it "redirects non-owner user to the root page when trying to edit a review" do
       sign_in user2
       get edit_book_review_path(review.book, review)
-      expect(response).to redirect_to book_path(review.book)
+      expect(response).to redirect_to root_path
     end
 
     it "redirects the user if they try to update a review they do not own" do
       sign_in user2
       patch book_review_path(review.book, review), params: { review: { title: "New Title" } }
-      expect(response).to redirect_to book_path(review.book)
+      expect(response).to redirect_to root_path
     end
   end
 

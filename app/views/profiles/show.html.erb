@@ -1,0 +1,28 @@
+<div class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <%= render partial: "header", locals: { user: current_user } %>
+
+      <div class="p-6 border-b flex">
+        <%= link_to "Update profile", edit_user_registration_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_frame: "modal" } %>
+        <%= link_to "Log out", destroy_user_session_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 place-self-end ml-auto", data: { turbo_method: :delete } %>
+      </div>
+
+      <div class="p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Reviews</h2>
+        <% if @reviews.any? %>
+          <div class="space-y-6">
+            <%= render partial: "profiles/reviews/review", collection: @reviews %>
+          </div>
+          <% if @pagy.pages > 1 %>
+            <div class="mt-8">
+              <%== pagy_nav(@pagy) %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-gray-600" id="empty-reviews-message">No reviews yet. Leave a review on a book!</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

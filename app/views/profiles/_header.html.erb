@@ -1,0 +1,13 @@
+<%# locals: (user:) -%>
+
+<div class="bg-blue-600 text-white p-6" id="profile-header">
+  <div class="flex items-center space-x-4">
+    <div class="w-20 h-20 bg-blue-300 rounded-full flex items-center justify-center text-2xl font-bold">
+      <%= user.nickname.first.upcase %>
+    </div>
+    <div>
+      <h1 class="text-2xl font-bold"><%= user.nickname %></h1>
+      <p class="text-blue-200">Member since <%= user.created_at.strftime("%B %Y") %></p>
+    </div>
+  </div>
+</div>

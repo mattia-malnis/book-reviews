@@ -1,9 +1,5 @@
-class Books::ReviewsController < ApplicationController
+class Books::ReviewsController < ReviewsController
   include FindBook
-
-  before_action :authenticate_user!
-  before_action :find_review, only: [ :edit, :update ]
-  before_action :authorize_user, only: [ :edit, :update ]
 
   def new
     @review = @book.reviews.new
@@ -23,33 +19,9 @@ class Books::ReviewsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @review.update(review_params)
-      respond_to do |format|
-        format.html { redirect_to(book_path(@book)) }
-        format.turbo_stream
-      end
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
   private
 
-  def review_params
-    params.require(:review).permit(:title, :description, :rating)
-  end
-
-  def find_review
-    @review = @book.reviews.find(params[:id])
-  end
-
-  def authorize_user
-    unless @review.user_id == current_user.id
-      redirect_to book_path(@book)
-    end
+  def after_update_path
+    book_path(@book)
   end
 end

@@ -14,7 +14,7 @@
 
       <div>
         <% if user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_method: :delete } %>
+          <%= link_to "Your profile", profile_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150" %>
         <% else %>
           <%= link_to new_user_session_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_frame: "modal" } do %>
             <%= inline_svg_tag("user-circle.svg", class: "w-5 h-5 mr-2") %> Login
