@@ -6,6 +6,7 @@ RSpec.describe Review, type: :model do
   context "associations" do
     it { should belong_to(:user) }
     it { should belong_to(:book) }
+    it { should have_many(:votes) }
   end
 
   context "validations" do
