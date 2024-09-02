@@ -10,6 +10,14 @@ class User < ApplicationRecord
 
   before_validation :normalize_fields
 
+  def can_vote_review?(review)
+    id != review.user_id
+  end
+
+  def get_vote_for_review(review)
+    review.votes.find { |vote| vote.user_id == id }
+  end
+
   private
 
   def normalize_fields

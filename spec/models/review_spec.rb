@@ -51,4 +51,20 @@ RSpec.describe Review, type: :model do
       expect(review.title).to eq("Review title")
     end
   end
+
+  context "votes counter" do
+    let(:user1) { FactoryBot.create(:user) }
+    let(:user2) { FactoryBot.create(:user) }
+    let(:review) { FactoryBot.create(:review, user: user1) }
+
+    it "increases like_count when a like vote is created" do
+      Vote.vote_like.create!({ user: user2, review: })
+      expect { review.update_like_counter }.to change { review.like_count }.by(1)
+    end
+
+    it "increases dislike_count when a dislike vote is created" do
+      Vote.vote_dislike.create!({ user: user2, review: })
+      expect { review.update_dislike_counter }.to change { review.dislike_count }.by(1)
+    end
+  end
 end

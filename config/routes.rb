@@ -18,6 +18,13 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create, :edit, :update ], module: :books
   end
 
+  resources :reviews, only: [] do
+    member do
+      post "vote-toggle-like", to: "votes#toggle_vote", defaults: { vote_type: "like" }, as: :toggle_like
+      post "vote-toggle-dislike", to: "votes#toggle_vote", defaults: { vote_type: "dislike" }, as: :toggle_dislike
+    end
+  end
+
   scope "profile" do
     get "/", to: "profiles#show", as: :profile
     resources :reviews, only: [ :edit, :update ], module: :profiles, as: :profile_reviews

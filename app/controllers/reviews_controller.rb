@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  include FindReview
+
   before_action :authenticate_user!
   before_action :find_review, only: [ :edit, :update ]
   before_action :authorize_user, only: [ :edit, :update ]
@@ -21,10 +23,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :description, :rating)
-  end
-
-  def find_review
-    @review = Review.find(params[:id])
   end
 
   def authorize_user

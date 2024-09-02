@@ -12,6 +12,12 @@ class Review < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
+  [ "like", "dislike" ].each do |type|
+    define_method("update_#{type}_counter") do
+      update("#{type}_count": votes.send("vote_#{type}").count)
+    end
+  end
+
   private
 
   def normalize_fields

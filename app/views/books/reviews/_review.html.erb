@@ -14,4 +14,9 @@
     <% end %>
   </div>
   <p class="text-gray-600 mt-4"><%= review.description %></p>
+
+  <div class="flex items-center space-x-6 mt-4">
+    <%= vote_button("like", review) %>
+    <%= vote_button("dislike", review) %>
+  </div>
 <% end %>
