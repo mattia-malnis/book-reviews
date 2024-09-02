@@ -20,6 +20,12 @@
   </head>
 
   <body>
+    <div class="fixed z-50 space-y-1 top-6 right-10">
+      <div id="notification-tray" class="space-y-4">
+        <%= render_flash_notifications %>
+      </div>
+    </div>
+
     <main>
       <%= render partial: "shared/header" %>
       <%= yield %>

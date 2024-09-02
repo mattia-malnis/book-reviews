@@ -1,0 +1,16 @@
+<%# locals: (message:, type: "notice") %>
+
+<% type = type.to_sym %>
+<% class_names = type == :alert ? "bg-red-100 border-red-500 text-red-700" : "bg-white border-alpha-black-25 text-gray-700" %>
+
+<%= tag.div class: ["flex gap-3 rounded-lg border p-4 group max-w-80 shadow-md", class_names],
+            data: {
+              controller: "flash-notification"
+            } do %>
+
+  <%= tag.p message, class: "text-sm font-medium" %>
+
+  <div class="ml-auto">
+    <%= inline_svg_tag("x-mark.svg", class: "size-5 cursor-pointer", data: { action: "click->flash-notification#close" }) %>
+  </div>
+<% end %>

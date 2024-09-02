@@ -33,4 +33,14 @@ module ApplicationHelper
     options[:data][:action] = "turbo:submit-end->modal#closeOnSuccess" unless options[:data].key? :action
     form_for(record, options, &block)
   end
+
+  def render_flash_notifications
+    notifications = flash.flat_map do |type, message_or_messages|
+      Array(message_or_messages).compact_blank.map do |message|
+        render partial: "shared/notification", locals: { type: type, message: message }
+      end
+    end
+
+    safe_join(notifications)
+  end
 end
