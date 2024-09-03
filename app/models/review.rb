@@ -1,9 +1,9 @@
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :book, touch: true
+  belongs_to :book
   has_many :votes, dependent: :destroy
 
-  broadcasts_refreshes
+  broadcasts_refreshes_to :book
 
   validates :title, :description, presence: true
   validates :rating, numericality: { in: 1..5 }

@@ -40,6 +40,7 @@ namespace :fake_data do
       Review.upsert_all(reviews)
       puts "Inserted #{reviews.size} reviews."
     end
+    Book.all.find_each(&:cache_ratings_average)
     puts "Finished!"
   end
 end

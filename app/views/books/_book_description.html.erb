@@ -2,7 +2,10 @@
 
 <section class="mt-6 lg:mt-0 lg:ml-8" id="book-description">
   <div class="mb-4">
-    <%= reviews_average(book.reviews) %>
+    <div class="flex items-center text-sm text-gray-500 mb-2">
+      <%= inline_svg_tag("star.svg", class: "size-5 text-yellow-500 mr-1") %>
+      <%= book.ratings_avg %> / 5
+    </div>
   </div>
   <h1 class="text-3xl font-bold text-gray-800 mb-2"><%= book.title %></h1>
   <p class="text-xl text-gray-600 italic mb-6"><%= book.subtitle %></p>

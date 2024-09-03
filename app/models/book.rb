@@ -4,8 +4,6 @@ class Book < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
 
-  broadcasts_refreshes
-
   validates :title, presence: true
 
   before_validation :normalize_fields
@@ -17,6 +15,10 @@ class Book < ApplicationRecord
                       tsvector_column: "textsearchable_col"
                     }
                   }
+
+  def cache_ratings_average
+    update ratings_avg: reviews.average(:rating)
+  end
 
   private
 

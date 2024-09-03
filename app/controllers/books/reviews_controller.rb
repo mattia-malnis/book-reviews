@@ -10,6 +10,7 @@ class Books::ReviewsController < ReviewsController
     @review.user = current_user
 
     if @review.save
+      @book.cache_ratings_average
       respond_to do |format|
         format.html { redirect_to book_path(@book) }
         format.turbo_stream

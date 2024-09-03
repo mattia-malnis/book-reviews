@@ -1,2 +1,2 @@
 <%= turbo_stream.replace(dom_id(@review), partial: "review", locals: { review: @review }) %>
-<%= turbo_stream.replace("book-description", partial: "books/book_description", locals: { book: @book }) %>
+<%= turbo_stream.replace("book-description", partial: "books/book_description", locals: { book: @review.book }) %>

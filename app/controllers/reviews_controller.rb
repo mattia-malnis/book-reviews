@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
+      @review.book.cache_ratings_average
       respond_to do |format|
         format.html { redirect_to(after_update_path) }
         format.turbo_stream
