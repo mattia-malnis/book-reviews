@@ -16,7 +16,14 @@ class BooksController < ApplicationController
   end
 
   def show
-    @reviews = @book.reviews.eager_load(:user, :votes)
+    @reviews = @book.reviews
+    rating = params[:rating].to_i
+    if rating.between?(1, 5)
+      @reviews = @reviews.where(rating: rating)
+      @filtered = true
+    end
+    @reviews = @reviews.ordered.eager_load(:user, :votes)
+
     @pagy, @reviews = pagy(@reviews)
   end
 end

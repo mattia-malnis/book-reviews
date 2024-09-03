@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @reviews = current_user.reviews.eager_load(:book)
+    @reviews = current_user.reviews.ordered.eager_load(:book)
     @pagy, @reviews = pagy(@reviews)
   end
 end

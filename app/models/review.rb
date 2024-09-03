@@ -10,7 +10,7 @@ class Review < ApplicationRecord
 
   before_validation :normalize_fields
 
-  default_scope { order(created_at: :desc) }
+  scope :ordered, -> { order(created_at: :desc) }
 
   [ "like", "dislike" ].each do |type|
     define_method("update_#{type}_counter") do

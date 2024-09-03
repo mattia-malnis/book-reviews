@@ -1,6 +1,6 @@
 <%# locals: (review:) -%>
 
-<%= content_tag :div, class: "bg-white rounded-lg shadow p-6", id: dom_id(review) do %>
+<%= content_tag :div, class: "border-b border-gray-200 py-8", id: dom_id(review) do %>
   <div class="flex justify-between items-start">
     <div class="space-y-1">
       <%= render_stars(review.rating) %>

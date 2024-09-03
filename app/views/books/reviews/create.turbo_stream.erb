@@ -1,5 +1,5 @@
 <%= turbo_stream.prepend("reviews-list", partial: "review", locals: { review: @review }) %>
-<%= turbo_stream.replace("book-description", partial: "books/book_description", locals: { book: @book }) %>
+<%= turbo_stream.replace("rating-statistics", partial: "books/rating_statistics_box", locals: { book: @book }) %>
 <%= turbo_stream.replace("empty-reviews-message") do %>
  <% # In the case this is the first review we need to replace the "empty-reviews-message" element %>
   <div id="reviews-list">
