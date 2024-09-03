@@ -44,7 +44,7 @@ gem "good_job", "~> 4.2"
 gem "pagy", "~> 9.0"
 
 # Embed SVG documents in your Rails views and style them with CSS [https://github.com/jamesmartin/inline_svg]
-gem "inline_svg", "~> 1.9"
+gem "inline_svg", "~> 1.10"
 
 # PostgreSQL’s full text search [https://github.com/Casecommons/pg_search]
 gem "pg_search", "~> 2.3", ">= 2.3.7"

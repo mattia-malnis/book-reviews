@@ -183,7 +183,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
-    inline_svg (1.9.0)
+    inline_svg (1.10.0)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.7.2)
@@ -195,7 +195,7 @@ GEM
       activesupport (>= 5.0.0)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
-    logger (1.6.0)
+    logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -442,7 +442,7 @@ DEPENDENCIES
   good_job (~> 4.2)
   image_processing (~> 1.2)
   importmap-rails
-  inline_svg (~> 1.9)
+  inline_svg (~> 1.10)
   jbuilder
   pagy (~> 9.0)
   pg (~> 1.1)
