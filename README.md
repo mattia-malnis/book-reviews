@@ -32,7 +32,17 @@ This application integrates with the [Big Book API](https://bigbookapi.com/) to 
 * Provides a list of books that users can search and browse.
 * Users can read reviews of books.
 * Registered users can leave reviews for books.
+* Registered users can vote reviews.
+* Users have a personal profile page where they can:
+  * Edit their profile information.
+  * View the reviews they have written.
 
 ## Testing
 
 Test the application with RSpec by running the command `bundle exec rspec`.
+
+## Screenshots
+
+<img width="1469" alt="Books listing" src="https://github.com/user-attachments/assets/eade2008-5472-4646-978b-7c00e7ed3016">
+
+![immagine](https://github.com/user-attachments/assets/4634cae9-4026-44a8-8126-d7225bfb7335)
