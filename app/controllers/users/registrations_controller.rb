@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |resource|
       if resource.errors.empty?
         respond_to do |format|
-          format.turbo_stream { render turbo_stream: turbo_stream.replace("profile-header", partial: "profiles/header", locals: { user: resource }) }
+          format.turbo_stream { render turbo_stream: turbo_stream.replace("profile-info", partial: "profiles/info", locals: { user: resource }) }
           format.html { redirect_to after_update_path_for(resource) }
         end
         return

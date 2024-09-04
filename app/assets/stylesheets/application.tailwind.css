@@ -2,12 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  h4 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  h1,
+  h2,
+  h3,
+  .logo {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
 .pagy {
   @apply flex items-center justify-center -space-x-px mt-8;
 }
 
 .pagy a:not(.gap) {
-  @apply flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-400 bg-white;
+  @apply flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-400;
 
   &:hover {
     @apply text-blue-600;

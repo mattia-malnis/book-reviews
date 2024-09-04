@@ -1,9 +1,9 @@
 <%# locals: (review:) -%>
 
-<%= content_tag :div, class: "bg-gray-50 rounded-lg p-4 shadow-sm hover:shadow-md hover:bg-gray-100 transition duration-300", id: dom_id(review) do %>
+<%= content_tag :div, class: "border-b border-gray-200 py-6", id: dom_id(review) do %>
   <div class="flex justify-between items-start">
     <div>
-      <h3 class="text-lg font-medium text-gray-800"><%= review.book.title %></h3>
+      <h3 class="text-lg font-semibold text-gray-800"><%= review.book.title %></h3>
       <div class="mt-1">
         <%= render_stars(review.rating) %>
       </div>
@@ -12,7 +12,7 @@
       <%= inline_svg_tag("pencil-square.svg", class: "w-5 h-5") %>
     <% end %>
   </div>
-  <h4 class="text-md font-medium text-gray-700 mt-2"><%= review.title %></h4>
-  <p class="text-gray-600 mt-1"><%= review.description %></p>
-  <%= link_to "View Book", book_path(review.book), class: "inline-block mt-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150" %>
+  <h4 class="text-md font-medium text-gray-700 mt-4"><%= review.title %></h4>
+  <p class="text-gray-700"><%= review.description %></p>
+  <%= link_to "View Book", book_path(review.book), class: "mt-2 inline-block text-sm text-blue-600 hover:text-blue-800 transition" %>
 <% end %>

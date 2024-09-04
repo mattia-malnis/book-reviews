@@ -1,61 +1,53 @@
 <%= turbo_stream_from @book %>
-<div class="bg-gradient-to-b from-gray-50 to-white">
-  <div class="container mx-auto px-4 lg:px-6 py-12 lg:py-16">
-    <article class="flex flex-col lg:flex-row gap-8">
-      <aside class="lg:w-1/4">
-        <div class="sticky top-24 text-center">
-          <%= book_image(@book, "w-auto max-w-full mx-auto rounded shadow-lg transition duration-300 hover:shadow-xl") %>
-          <% if user_signed_in? %>
-            <%= link_to "Leave a review", new_book_review_path(@book), class: "mt-6 px-8 py-2 inline-flex items-center justify-center border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_frame: "modal" } %>
-          <% end %>
-        </div>
-      </aside>
+<% content_for :aside do %>
+  <%= book_image(@book, "w-auto max-w-full mx-auto rounded shadow-lg transition duration-300 hover:shadow-xl") %>
+  <% if user_signed_in? %>
+    <%= link_to "Leave a review", new_book_review_path(@book), class: "mt-6 px-8 py-2 inline-flex items-center justify-center border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150", data: { turbo_frame: "modal" } %>
+  <% end %>
+<% end %>
 
-      <div class="lg:w-3/4">
-        <header>
-          <h1 class="text-4xl font-bold text-gray-900 mb-2"><%= @book.title %></h1>
-          <p class="text-2xl text-gray-700 italic mb-8"><%= @book.subtitle %></p>
-        </header>
+<%= render "shared/two_column_layout" do %>
+  <header>
+    <h1 class="text-4xl font-bold text-gray-900 mb-2"><%= @book.title %></h1>
+    <p class="text-2xl text-gray-700 italic mb-8"><%= @book.subtitle %></p>
+  </header>
 
-        <%= render partial: "rating_statistics_box", locals: { book: @book} %>
+  <%= render partial: "rating_statistics_box", locals: { book: @book} %>
 
-        <section>
-          <header>
-            <h2 class="text-3xl font-semibold text-gray-900 pb-2 border-b-2 border-gray-200">Reviews</h2>
-          </header>
+  <section>
+    <header>
+      <h2 class="text-3xl font-semibold text-gray-900 pb-2 border-b-2 border-gray-200">Reviews</h2>
+    </header>
 
-          <% if @reviews.any? %>
-            <% if @filtered %>
-              <p class="text-gray-600 text-lg mt-6">
-                You're viewing <%= pluralize(params[:rating], "star") %> reviews.
-                <%= link_to "View all", book_path(@book), class: "underline" %>.
-              </p>
-            <% end %>
+    <% if @reviews.any? %>
+      <% if @filtered %>
+        <p class="text-gray-600 text-lg mt-6">
+          You're viewing <%= pluralize(params[:rating], "star") %> reviews.
+          <%= link_to "View all", book_path(@book), class: "underline" %>.
+        </p>
+      <% end %>
 
-            <div id="reviews-list">
-              <%= render partial: "books/reviews/review", collection: @reviews %>
-            </div>
-
-            <% if @pagy.pages > 1 %>
-              <div class="mt-8">
-                <%== pagy_nav(@pagy) %>
-              </div>
-            <% end %>
-
-          <% else %>
-            <% if @filtered %>
-              <p class="text-gray-600 text-lg mt-6" id="empty-reviews-message">
-                No <%= pluralize(params[:rating], "star") %> reviews found.
-                <%= link_to "View all", book_path(@book), class: "underline" %>.
-              </p>
-            <% else %>
-              <p class="text-gray-600 text-lg mt-6" id="empty-reviews-message">
-                No reviews yet. Be the first to leave a review!
-              </p>
-            <% end %>
-          <% end %>
-        </section>
+      <div id="reviews-list">
+        <%= render partial: "books/reviews/review", collection: @reviews %>
       </div>
-    </article>
-  </div>
-</div>
+
+      <% if @pagy.pages > 1 %>
+        <div class="mt-8">
+          <%== pagy_nav(@pagy) %>
+        </div>
+      <% end %>
+
+    <% else %>
+      <% if @filtered %>
+        <p class="text-gray-600 text-lg mt-6" id="empty-reviews-message">
+          No <%= pluralize(params[:rating], "star") %> reviews found.
+          <%= link_to "View all", book_path(@book), class: "underline" %>.
+        </p>
+      <% else %>
+        <p class="text-gray-600 text-lg mt-6" id="empty-reviews-message">
+          No reviews yet. Be the first to leave a review!
+        </p>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>
