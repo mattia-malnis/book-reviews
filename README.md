@@ -43,6 +43,8 @@ Test the application with RSpec by running the command `bundle exec rspec`.
 
 ## Screenshots
 
-<img width="1469" alt="Books listing" src="https://github.com/user-attachments/assets/eade2008-5472-4646-978b-7c00e7ed3016">
+<img width="1470" alt="Books listing" src="https://github.com/user-attachments/assets/4be75fff-aa09-41a2-b82c-766f39455312">
 
-![immagine](https://github.com/user-attachments/assets/4634cae9-4026-44a8-8126-d7225bfb7335)
+---
+
+![immagine](https://github.com/user-attachments/assets/920ce6e9-a595-4a40-8b43-1ab3e40d2c57)
