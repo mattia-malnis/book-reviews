@@ -81,7 +81,7 @@ group :development, :test do
   gem "pg_query", "~> 5.1"
 
   # A Ruby gem to load environment variables from `.env` [https://github.com/bkeepers/dotenv]
-  gem "dotenv-rails", "~> 3.1", ">= 3.1.2"
+  gem "dotenv-rails", "~> 3.1"
 end
 
 group :development do
