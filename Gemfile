@@ -101,5 +101,5 @@ group :test do
   gem "shoulda-matchers", "~> 6.4"
 
   # Library for stubbing and setting expectations on HTTP requests in Ruby [https://github.com/bblimke/webmock]
-  gem "webmock", "~> 3.23"
+  gem "webmock", "~> 3.24"
 end
