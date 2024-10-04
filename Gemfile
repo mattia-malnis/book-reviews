@@ -41,7 +41,7 @@ gem "image_processing", "~> 1.2"
 gem "good_job", "~> 4.3"
 
 # Pagination gem [https://github.com/ddnexus/pagy]
-gem "pagy", "~> 9.0"
+gem "pagy", "~> 9.1"
 
 # Embed SVG documents in your Rails views and style them with CSS [https://github.com/jamesmartin/inline_svg]
 gem "inline_svg", "~> 1.10"
