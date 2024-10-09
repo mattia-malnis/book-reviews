@@ -38,7 +38,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 # Background Jobs [https://github.com/bensheldon/good_job]
-gem "good_job", "~> 4.3"
+gem "good_job", "~> 4.4"
 
 # Pagination gem [https://github.com/ddnexus/pagy]
 gem "pagy", "~> 9.1"
