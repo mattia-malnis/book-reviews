@@ -63,7 +63,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Lint your ERB or HTML files [https://github.com/Shopify/erb-lint]
-  gem "erb_lint", "~> 0.6.0", require: false
+  gem "erb_lint", "~> 0.7.0", require: false
 
   # RSpec Testing [https://github.com/rspec/rspec-rails]
   gem "rspec-rails", "~> 7.0"
