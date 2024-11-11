@@ -66,7 +66,7 @@ group :development, :test do
   gem "erb_lint", "~> 0.7.0", require: false
 
   # RSpec Testing [https://github.com/rspec/rspec-rails]
-  gem "rspec-rails", "~> 7.0"
+  gem "rspec-rails", "~> 7.1"
 
   # Brings back `assigns` and `assert_template` to your Rails tests [https://github.com/rails/rails-controller-testing]
   gem "rails-controller-testing", "~> 1.0"
