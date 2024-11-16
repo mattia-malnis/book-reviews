@@ -1,3 +1,7 @@
+# There is a bug with Devise on Rails 8:
+# https://github.com/heartcombo/devise/pull/5695
+# https://github.com/heartcombo/devise/issues/5705
+
 require "rails_helper"
 
 RSpec.describe "Books::Reviews", type: :request do
@@ -7,7 +11,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
   describe "GET /books/:book_id/reviews/new" do
     it "render new review page" do
-      sign_in user
+      sign_in user, scope: :user
       get new_book_review_path(book)
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:new)
@@ -19,7 +23,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
     context "when format is HTML" do
       it "creates a new review and redirects to the book page" do
-        sign_in user
+        sign_in user, scope: :user
         post book_reviews_path(book), params: review_params
         expect(response).to redirect_to(book_path(book))
       end
@@ -27,7 +31,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
     context "when format is turbo_stream" do
       it "creates a new review and renders the Turbo Stream response" do
-        sign_in user
+        sign_in user, scope: :user
         post book_reviews_path(book), params: review_params, as: :turbo_stream
         expect(response).to have_http_status(:success)
         expect(response).to render_template(:create)
@@ -35,7 +39,7 @@ RSpec.describe "Books::Reviews", type: :request do
     end
 
     it "renders the new template if the review creation fails" do
-      sign_in user
+      sign_in user, scope: :user
       post book_reviews_path(book), params: { review: { title: "Great book" } }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(:new)
@@ -44,7 +48,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
   describe "GET /books/:book_id/reviews/:id/edit" do
     it "render edit review page" do
-      sign_in user
+      sign_in user, scope: :user
       get edit_book_review_path(review.book, review)
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:edit)
@@ -56,7 +60,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
     context "when format is HTML" do
       it "updates a the review and redirects to the book page" do
-        sign_in user
+        sign_in user, scope: :user
         patch book_review_path(review.book, review), params: review_params
         review.reload
         expect(review.title).to eq(review_params[:review][:title])
@@ -66,7 +70,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
     context "when format is turbo_stream" do
       it "updates a the review and renders the Turbo Stream response" do
-        sign_in user
+        sign_in user, scope: :user
         patch book_review_path(review.book, review), params: review_params, as: :turbo_stream
         review.reload
         expect(review.title).to eq(review_params[:review][:title])
@@ -76,7 +80,7 @@ RSpec.describe "Books::Reviews", type: :request do
     end
 
     it "renders the edit template if the review update fails" do
-      sign_in user
+      sign_in user, scope: :user
       patch book_review_path(review.book, review), params: { review: { title: "" } }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(:edit)
@@ -87,13 +91,13 @@ RSpec.describe "Books::Reviews", type: :request do
     let(:user2) { FactoryBot.create(:user) }
 
     it "redirects non-owner user to the root page when trying to edit a review" do
-      sign_in user2
+      sign_in user2, scope: :user
       get edit_book_review_path(review.book, review)
       expect(response).to redirect_to root_path
     end
 
     it "redirects the user if they try to update a review they do not own" do
-      sign_in user2
+      sign_in user2, scope: :user
       patch book_review_path(review.book, review), params: { review: { title: "New Title" } }
       expect(response).to redirect_to root_path
     end
@@ -101,7 +105,7 @@ RSpec.describe "Books::Reviews", type: :request do
 
   context "authentication" do
     it "allows logged in user to access the new review page" do
-      sign_in user
+      sign_in user, scope: :user
       get new_book_review_path(book)
       expect(response).to have_http_status(:success)
     end

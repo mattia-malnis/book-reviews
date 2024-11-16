@@ -6,7 +6,7 @@ RSpec.describe "Votes", type: :request do
 
   shared_examples "vote toggle action" do |vote_type|
     it "toggles the vote and updates the counter" do
-      sign_in user
+      sign_in user, scope: :user
       expect {
         post send("toggle_#{vote_type}_review_path", review), as: :turbo_stream
       }.to change { review.reload.send("#{vote_type}_count") }.by(1)

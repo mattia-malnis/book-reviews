@@ -5,7 +5,7 @@ RSpec.describe "Profiles", type: :request do
 
   describe "GET /profile" do
     it "render show page when the user is logged in" do
-      sign_in user
+      sign_in user, scope: :user
       get profile_path
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:show)
