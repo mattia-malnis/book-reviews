@@ -7,7 +7,7 @@
 
 ### Requirements
 
-* Ruby 3.3.4
+* Ruby 3+ (check `.ruby-version`)
 * PostgreSQL 16+
 
 ### App setup
