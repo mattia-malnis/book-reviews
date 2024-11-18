@@ -235,7 +235,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (9.2.2)
+    pagy (9.3.1)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
@@ -438,7 +438,7 @@ DEPENDENCIES
   importmap-rails
   inline_svg (~> 1.10)
   jbuilder
-  pagy (~> 9.1)
+  pagy (~> 9.3)
   pg (~> 1.5)
   pg_query (~> 5.1)
   pg_search (~> 2.3, >= 2.3.7)
