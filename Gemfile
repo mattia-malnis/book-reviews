@@ -78,7 +78,7 @@ group :development, :test do
   gem "prosopite", "~> 1.4", ">= 1.4.2"
 
   # Ruby extension to parse, deparse and normalize SQL queries using the PostgreSQL query parser [https://github.com/pganalyze/pg_query]
-  gem "pg_query", "~> 5.1"
+  gem "pg_query", "~> 6.0"
 
   # A Ruby gem to load environment variables from `.env` [https://github.com/bkeepers/dotenv]
   gem "dotenv-rails", "~> 3.1"
